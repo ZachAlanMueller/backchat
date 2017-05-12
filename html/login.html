@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Backchat</title>
+		<link rel="stylesheet" href="../css/login.css">
+		<link rel="stylesheet" href="../css/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/layout.css">
+
+        <!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+		<!-- normal script imports etc  -->
+		<script src="../js/jquery-3.2.1.min.js"></script>   
+
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+	</head>
+	<body>
+
+	    <div id="main" class="pure-u-1">
+		  	<h1>Backchat Login</h1>
+		  	<input id="email" placeholder="Email" type="text" required="">
+		  	<input id="password" placeholder="Password" type="password" required="">
+		  	<button id="submit">Submit</button>
+	    </div>
+	</body>
+
+	<script>
+
+
+	////////////////////////////
+	$('#submit').on("click", function(){
+		// $.get('http://backchat.zachalanmueller.com/oauth/clients', function( data ) {
+		//   	alert( 'Successful cross-domain AJAX request.' );
+		//   	console.log(data);
+		// });
+
+		// .get('/oauth/clients')
+  		//   .then(response => {
+  		//       console.log(response.data);
+  		//   });
+
+  		var email = $('#email').val();
+  		var password = $('#password').val();
+
+  		
+
+  		var pdata = {
+		    grant_type: 'password',
+	        client_id: 4,
+	        client_secret: '9DdlKmvGJDOP6xGwA9dP8oKV3DpcS7y9b2Lkx4JD',
+	        username: email,
+	        password: password,
+	        scope: '*',
+		};
+
+		console.log(pdata);
+
+		$.post( "http://backchat.zachalanmueller.com/oauth/token", pdata)
+		.done(function( data ) {
+			alert( "Data Loaded: ");
+			console.log(data);
+		})
+		.fail(function(xhr, status, error) {
+	        // error handling
+	        console.log(xhr);
+	        console.log(xhr.responseText);
+	        console.log(error);
+	        console.log(status);
+	    });;
+		
+
+		// $.post( "http://backchat.zachalanmueller.com/login", { email: "zach.a.mueller@gmail.com", password: "P@1nle55", remember: 1})
+		// .done(function( data ) {
+		// 	alert( "Data Loaded: ");
+		// 	console.log(data);
+		// })
+		// .fail(function(xhr, status, error) {
+	 //        // error handling
+	 //        console.log(xhr.responseText);
+	 //        console.log(error);
+	 //        console.log(status);
+	 //    });;
+	});
+	</script>
+</html>

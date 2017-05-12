@@ -20,8 +20,9 @@ function createMainWindow() {
 		width: 600,
 		height: 400
 	});
-
-	win.loadURL(`file://${__dirname}/index.html`);
+	win.webContents.openDevTools();
+	win.maximize();
+	win.loadURL(`file://${__dirname}/html/login.html`);
 	win.on('closed', onClosed);
 
 	return win;
