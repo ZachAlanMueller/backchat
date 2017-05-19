@@ -16,16 +16,28 @@ function onClosed() {
 }
 
 function createMainWindow() {
+
+	const {app, ipcMain} = require('electron');
+
+
+	var basepath = app.getAppPath();
+
 	const win = new electron.BrowserWindow({
 		width: 600,
 		height: 400
 	});
+	const {BrowserWindow} = require('electron');
+	let loadingWin = new BrowserWindow({frame: false, parent: win, width: 350, height: 350});
+	loadingWin.loadURL(`file://${__dirname}/html/loadingWindow.html`);
+	loadingWin.setResizable(false);
+	//loadingWin.webContents.openDevTools();
 	win.webContents.openDevTools();
 	win.maximize();
 	win.loadURL(`file://${__dirname}/html/login.html`);
 	win.on('closed', onClosed);
+	loadingWin.show();
+	//return win;
 
-	return win;
 }
 
 app.on('window-all-closed', () => {
