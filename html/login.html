@@ -46,9 +46,9 @@
 
 	
 
-	<script>
+	<!-- <script>
 		var username = '';
-	  var socket = io('https://zachalanmueller.com:3000');
+	  var socket = io.connect('http://zachalanmueller.com:3000');
 	  socket.on('update', function (data) {
 	    console.log('Update Information:');
 	    console.log(data);
@@ -65,6 +65,18 @@
 	  	console.log(username);
 	  	socket.emit('test-channel', {username: username, msg: 'test message'});
 	  });
-	</script>
+	</script> -->
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+		     // open a socket connection
+		    var io = require('socket.io-client');
+		    var socket = io('http://zachalanmueller:3000');
+
+		    socket.on('connect', function (user) {
+		        console.log('Client connected...');
+		    });
+		});
+		</script>
 
 </html>

@@ -1,9 +1,8 @@
 var app = require('http').createServer(handler)
-// var io = require('socket.io')(app);
+var io = require('socket.io')(app);
 var fs = require('fs');
-
-server = app.listen(3000);
-var io = require('socket.io').listen(server);
+io.origins('*:*');
+app.listen(3000);
 
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
