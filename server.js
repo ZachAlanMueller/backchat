@@ -2,6 +2,7 @@ var app = require('http').createServer(handler)
 var io = require('socket.io')(app);
 var fs = require('fs');
 io.origins('*:*');
+io.set('origins', 'http://zachalanmueller.com:3000');
 app.listen(3000);
 
 function handler (req, res) {
