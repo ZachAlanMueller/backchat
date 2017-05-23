@@ -57,4 +57,8 @@ io.on('connection', function (socket) {
   socket.on('my other event', function (data) {
     console.log(data);
   });
+  socket.on('testing', function (data) {
+    console.log(data);
+  io.emit('testing', data);
+  });
 });

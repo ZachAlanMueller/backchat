@@ -69,12 +69,16 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-		     // open a socket connection
 		    var io = require('socket.io-client');
-		    var socket = io('http://zachalanmueller.com:3000');
+		    var socket = io.connect('http://zachalanmueller.com:3000');
 
 		    socket.on('connect', function (user) {
-		        console.log('Client connected...');
+		      console.log('Client connected...');
+		      socket.emit('testing', {username: $('#username').val(), msg: 'hello there friend'});
+		    });
+
+		    socket.on('testing', function(data){
+		    	console
 		    });
 		});
 		</script>
