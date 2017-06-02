@@ -25,12 +25,14 @@
     "electron"
   ],
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "electron-debug": "^1.0.0"
   },
   "devDependencies": {
     "devtron": "^1.1.0",
-    "electron-packager": "^8.0.0",
     "electron": "^1.0.1",
+    "electron-packager": "^8.0.0",
+    "electron-rebuild": "^1.5.11",
     "xo": "^0.16.0"
   },
   "xo": {

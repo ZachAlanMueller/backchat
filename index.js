@@ -33,7 +33,7 @@ function createMainWindow() {
 	//loadingWin.webContents.openDevTools();
 	win.webContents.openDevTools();
 	win.maximize();
-	win.loadURL(`file://${__dirname}/html/login.html`);
+	win.loadURL(`file://${__dirname}/html/registration.html`);
 	win.on('closed', onClosed);
 	loadingWin.show();
 	//return win;

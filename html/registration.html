@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Backchat</title>
+		<link rel="stylesheet" href="../css/login.css">
+		<link rel="stylesheet" href="../css/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/layout.css">
+        <link rel="stylesheet" href="../css/toastr.min.css">
+        <style>
+        	.button-secondary {
+	            background: rgb(66, 184, 221); /* this is a light blue */
+	        }
+
+        </style>
+        <!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+		<!-- normal script imports etc  -->
+		<script src="../js/jquery-3.2.1.min.js"></script>   
+		<script src="../js/toastr.min.js"></script>
+		<script src="../js/socket.io.js"></script>
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+	</head>
+	<body style="height: 100%; border-color: 30px; border-color: black; background-color: white;">
+	    <div id="main" class="pure-g" style="position: absolute; top: 50%; transform: translateY(-50%);">
+	    	<div class="pure-u-1-3">
+	    	</div>
+	    	<form action="javascript:void(0);" id="loginForm" class="pure-u-1-3 pure-form" style="text-align: center;">
+			  	<h1 style="margin:10px;">Backchat Registration</h1>
+			  	<input id="email" placeholder="Email" type="text" required="" style="margin:10px;"><br>
+			  	<input id="username" placeholder="Username" type="text" required="" style="margin:10px;"><br>
+			  	<input id="password" placeholder="Password" type="password" required="" style="margin:10px;"><br>
+			  	<button id="submit" class="button-secondary pure-button" style="margin:10px;">Register</button>
+				</form>
+				<div class="pure-u-1-3">
+	    	
+	    	</div>
+	    </div>
+	</body>
+
+	<script type="text/javascript" src="../js/socket-common-logic.js"></script>
+	<script>
+		$('#submit').on('click', function(){
+			var registrationInfo = {email: $('#email').val(), password : $('#password').val(), username: $('#username').val()};
+			registrationInfo['email'] = registrationInfo['email'].trim();
+			registrationInfo['password'] = registrationInfo['password'].trim();
+			registrationInfo['username'] = registrationInfo['username'].trim();
+			
+
+    	socket.emit('registration', registrationInfo);
+    });
+	</script>
+
+
+</html>
